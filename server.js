@@ -16,9 +16,11 @@ app.use(express.json())
 // Cho phép React (localhost:5173) gọi API sang đây (localhost:5000)
 // Không có dòng này → React sẽ bị lỗi CORS khi gọi API
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: [
+    "http://localhost:5173",
+    "https://shop-frontend-xxxx.vercel.app"  // 👈 thay bằng URL Vercel thật của bạn
+  ]
 }))
-
 // ── Kết nối MongoDB ─────────────────────────────
 mongoose
   .connect(process.env.MONGO_URI)
